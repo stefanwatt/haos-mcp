@@ -8,7 +8,12 @@ import (
 	"path/filepath"
 )
 
-func RunCmd(query string, melodyCmd string) (*string, error) {
+func GetBasePath() string {
+	homeDir, _ := os.UserHomeDir()
+	return filepath.Join(homeDir, "Projects", "Melody.CLI", "melody_cli.py")
+}
+
+func RunCmd(query, melodyCmd string) (*string, error) {
 	homeDir, err := os.UserHomeDir()
 	scriptPath := filepath.Join(homeDir, "Projects", "Melody.CLI", "melody_cli.py")
 	cmd := exec.Command("python", scriptPath, melodyCmd, query)

@@ -21,7 +21,7 @@ func SearchHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 	if err != nil {
 		return mcp.NewToolResultError(err.Error()), nil
 	}
-	output,err := melody.Foo(query, "search")
+	output,err := melody.RunCmd(query, "search")
 
 	if err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("Search failed: %v", err)), nil
